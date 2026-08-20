@@ -1,16 +1,16 @@
 import { siteConfig } from './site';
-import { tarkovImages } from './tarkov';
+import { warThunderImages } from './war-thunder';
 import { pageIds, type PageId } from './i18n/routing';
 import { pageSitemapImageLabels } from './brand-sitemap';
 
 /** Rotating product screenshots for FAQ / review detail URLs. */
 export const crawlPhotoPool = [
-	tarkovImages.espWallhack,
-	tarkovImages.aimbotCombat,
-	tarkovImages.aimbotSkeleton,
-	tarkovImages.playerEsp,
-	tarkovImages.cheatsCombat,
-	'/images/tarkov-cheats-esp.webp',
+	warThunderImages.espWallhack,
+	warThunderImages.aimbotCombat,
+	warThunderImages.aimbotSkeleton,
+	warThunderImages.playerEsp,
+	warThunderImages.cheatsCombat,
+	'/images/war-thunder-cheats-esp.webp',
 ] as const;
 
 /**
@@ -18,31 +18,31 @@ export const crawlPhotoPool = [
  * Prefer compressed WebP screenshots so Google can fetch them quickly.
  */
 export const pageImageSrcById: Record<PageId, string> = {
-	home: '/images/tarkov-cheats-hero-1024w.webp',
-	'tarkov-esp': tarkovImages.playerEsp,
-	'tarkov-aimbot': tarkovImages.aimbotCombat,
-	features: tarkovImages.aimbotSkeleton,
-	pricing: tarkovImages.cheatsCombat,
-	setup: tarkovImages.playerEsp,
-	updates: '/images/tarkov-cheats-hero-1024w.webp',
-	faq: tarkovImages.aimbotSkeleton,
-	support: tarkovImages.cheatsCombat,
-	undetected: tarkovImages.espWallhack,
-	wallhack: tarkovImages.espWallhack,
-	radar: tarkovImages.playerEsp,
-	battleye: tarkovImages.aimbotCombat,
-	'cheats-2026': '/images/tarkov-cheats-hero-1024w.webp',
-	hacks: tarkovImages.cheatsCombat,
-	'cheat-download': tarkovImages.cheatsCombat,
-	'mod-menu': tarkovImages.playerEsp,
-	'soft-aim': tarkovImages.aimbotSkeleton,
-	'best-cheats': '/images/tarkov-cheats-hero-1024w.webp',
-	'aimbot-hack': tarkovImages.aimbotSkeleton,
-	'esp-hack': tarkovImages.espWallhack,
-	'unlock-all': tarkovImages.playerEsp,
-	privacy: tarkovImages.aimbotCombat,
-	refund: tarkovImages.cheatsCombat,
-	terms: tarkovImages.aimbotSkeleton,
+	home: '/images/war-thunder-cheats-hero-1024w.webp',
+	'war-thunder-esp': warThunderImages.playerEsp,
+	'war-thunder-aimbot': warThunderImages.aimbotCombat,
+	features: warThunderImages.aimbotSkeleton,
+	pricing: warThunderImages.cheatsCombat,
+	setup: warThunderImages.playerEsp,
+	updates: '/images/war-thunder-cheats-hero-1024w.webp',
+	faq: warThunderImages.aimbotSkeleton,
+	support: warThunderImages.cheatsCombat,
+	undetected: warThunderImages.espWallhack,
+	wallhack: warThunderImages.espWallhack,
+	radar: warThunderImages.playerEsp,
+	eac: warThunderImages.aimbotCombat,
+	'cheats-2026': '/images/war-thunder-cheats-hero-1024w.webp',
+	hacks: warThunderImages.cheatsCombat,
+	'cheat-download': warThunderImages.cheatsCombat,
+	'mod-menu': warThunderImages.playerEsp,
+	'soft-aim': warThunderImages.aimbotSkeleton,
+	'best-cheats': '/images/war-thunder-cheats-hero-1024w.webp',
+	'aimbot-hack': warThunderImages.aimbotSkeleton,
+	'esp-hack': warThunderImages.espWallhack,
+	'unlock-all': warThunderImages.playerEsp,
+	privacy: warThunderImages.aimbotCombat,
+	refund: warThunderImages.cheatsCombat,
+	terms: warThunderImages.aimbotSkeleton,
 };
 
 for (const pageId of pageIds) {

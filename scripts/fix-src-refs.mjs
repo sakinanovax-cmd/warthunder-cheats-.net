@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Final pass: fix remaining Tarkov references in src/. */
+/** Final pass: fix remaining War Thunder references in src/. */
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,27 +8,27 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 's
 const REMOVE_PAGE_IDS = ['hacks', 'cheat-download', 'mod-menu', 'soft-aim', 'best-cheats', 'aimbot-hack', 'esp-hack', 'unlock-all'];
 
 const REPLACEMENTS = [
-	['tarkovImages', 'tarkovImages'],
-	["from '../data/tarkov'", "from '../data/tarkov'"],
-	["from './tarkov'", "from './tarkov'"],
-	['/undetected-tarkov-cheats/', '/undetected-tarkov-cheats/'],
-	['/tarkov-wallhack/', '/tarkov-wallhack/'],
-	['/tarkov-radar-hack/', '/tarkov-radar-hack/'],
-	['/battleye-bypass/', '/battleye-bypass/'],
-	['/tarkov-cheats-2026/', '/tarkov-cheats-2026/'],
-	['/tarkov-aimbot/', '/tarkov-aimbot/'],
-	['/tarkov-esp/', '/tarkov-esp/'],
-	['/tarkov-cheats/', '/tarkov-esp/'],
-	['Tarkov Cheats', 'Tarkov Cheats'],
-	['Tarkov cheats', 'Tarkov cheats'],
-	['Tarkov wallhack', 'Escape from Tarkov wallhack'],
-	['Tarkov radar', 'Escape from Tarkov radar'],
-	['Tarkov Aimbot', 'Escape from Tarkov Aimbot'],
-	['Tarkov ESP', 'Escape from Tarkov ESP'],
-	['Escape from Tarkov', 'Escape from Tarkov'],
-	['BattlEye', 'BattlEye anti-cheat'],
-	['battleye', 'battleye'],
-	['tarkovcheats.org', 'tarkovcheats.org'],
+	['warThunderImages', 'warThunderImages'],
+	["from '../data/war-thunder'", "from '../data/war-thunder'"],
+	["from './war-thunder'", "from './war-thunder'"],
+	['/undetected-war-thunder-cheats/', '/undetected-war-thunder-cheats/'],
+	['/war-thunder-wallhack/', '/war-thunder-wallhack/'],
+	['/war-thunder-radar-hack/', '/war-thunder-radar-hack/'],
+	['/eac-bypass/', '/eac-bypass/'],
+	['/war-thunder-cheats-2026/', '/war-thunder-cheats-2026/'],
+	['/war-thunder-aimbot/', '/war-thunder-aimbot/'],
+	['/war-thunder-esp/', '/war-thunder-esp/'],
+	['/war-thunder-cheats/', '/war-thunder-esp/'],
+	['War Thunder Cheats', 'War Thunder Cheats'],
+	['War Thunder cheats', 'War Thunder cheats'],
+	['War Thunder wallhack', 'War Thunder wallhack'],
+	['War Thunder radar', 'War Thunder radar'],
+	['War Thunder Aimbot', 'War Thunder Aimbot'],
+	['War Thunder ESP', 'War Thunder ESP'],
+	['War Thunder', 'War Thunder'],
+	['Easy Anti-Cheat', 'Easy Anti-Cheat'],
+	['eac', 'eac'],
+	['warthundercheats.net', 'warthundercheats.net'],
 	['operatorEsp', 'playerEsp'],
 	['extractFight', 'rebootFight'],
 	['alMazrah', 'battleRoyaleIsland'],

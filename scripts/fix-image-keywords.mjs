@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const SIMPLE =
-	"images: { hero: 'tarkov cheats', espWallhack: 'tarkov cheats wallhack', aimbotCombat: 'tarkov cheats aimbot', squadFight: 'tarkov cheats', playerEsp: 'tarkov cheats esp', headerArt: 'tarkov cheats aimbot', cheatsPackage: 'tarkov cheats radar', rebootFight: 'tarkov cheats aimbot', battleRoyale: 'tarkov cheats', battleRoyaleIsland: 'tarkov cheats esp' }";
+	"images: { hero: 'war thunder cheats', espWallhack: 'war thunder cheats wallhack', aimbotCombat: 'war thunder cheats aimbot', squadFight: 'war thunder cheats', playerEsp: 'war thunder cheats esp', headerArt: 'war thunder cheats aimbot', cheatsPackage: 'war thunder cheats radar', rebootFight: 'war thunder cheats aimbot', battleRoyale: 'war thunder cheats', battleRoyaleIsland: 'war thunder cheats esp' }";
 
 const re =
 	/images: \{ hero: '[^']+', espWallhack: '[^']+', aimbotCombat: '[^']+', squadFight: '[^']+', playerEsp: '[^']+', headerArt: '[^']+', cheatsPackage: '[^']+', rebootFight: '[^']+', battleRoyale: '[^']+', battleRoyaleIsland: '[^']+' \}/g;
@@ -15,30 +15,30 @@ for (const f of ['scripts/i18n-data/ui-strings-part1.mjs', 'scripts/i18n-data/ui
 }
 
 const altMap = [
-	["imageAlt: 'Tarkov ESP player tags hack'", "imageAlt: 'tarkov cheats esp'"],
-	["imageAlt: 'Tarkov ESP radar hack'", "imageAlt: 'tarkov cheats radar'"],
-	["imageAlt: 'Tarkov aimbot sniper kill'", "imageAlt: 'tarkov cheats aimbot'"],
-	["imageAlt: 'Tarkov aimbot skeleton targeting'", "imageAlt: 'tarkov cheats aimbot'"],
-	["imageAlt: 'Tarkov cheats ADS combat'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats setup PC activation'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats updates BattlEye maintenance'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats FAQ ESP aimbot'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats support license help'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Undetected tarkov cheats ESP wallhack'", "imageAlt: 'undetected tarkov cheats'"],
-	["imageAlt: 'Tarkov wallhack skeleton ESP'", "imageAlt: 'tarkov cheats wallhack'"],
-	["imageAlt: 'BattlEye bypass tarkov ESP aimbot'", "imageAlt: 'tarkov cheats battleye'"],
-	["imageAlt: 'Tarkov cheats 2026 ESP aimbot'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats combat aimbot'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheat download ESP aimbot'", "imageAlt: 'tarkov cheats download'"],
-	["imageAlt: 'Tarkov mod menu ESP aimbot'", "imageAlt: 'tarkov cheats mod menu'"],
-	["imageAlt: 'Tarkov soft aim aimbot settings'", "imageAlt: 'tarkov cheats soft aim'"],
-	["imageAlt: 'Best tarkov cheats 2026 ESP'", "imageAlt: 'best tarkov cheats'"],
-	["imageAlt: 'Tarkov aimbot hack combat'", "imageAlt: 'tarkov cheats aimbot'"],
-	["imageAlt: 'Tarkov ESP hack wallhack'", "imageAlt: 'tarkov cheats esp'"],
-	["imageAlt: 'Tarkov unlock all ESP aimbot guide'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats privacy policy'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats refund policy'", "imageAlt: 'tarkov cheats'"],
-	["imageAlt: 'Tarkov cheats terms of use'", "imageAlt: 'tarkov cheats'"],
+	["imageAlt: 'War Thunder ESP player tags hack'", "imageAlt: 'war thunder cheats esp'"],
+	["imageAlt: 'War Thunder ESP radar hack'", "imageAlt: 'war thunder cheats radar'"],
+	["imageAlt: 'War Thunder aimbot sniper kill'", "imageAlt: 'war thunder cheats aimbot'"],
+	["imageAlt: 'War Thunder aimbot skeleton targeting'", "imageAlt: 'war thunder cheats aimbot'"],
+	["imageAlt: 'War Thunder cheats ADS combat'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats setup PC activation'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats updates Easy Anti-Cheat maintenance'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats FAQ ESP aimbot'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats support license help'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'Undetected war thunder cheats ESP wallhack'", "imageAlt: 'undetected war thunder cheats'"],
+	["imageAlt: 'War Thunder wallhack skeleton ESP'", "imageAlt: 'war thunder cheats wallhack'"],
+	["imageAlt: 'Easy Anti-Cheat bypass war-thunder ESP aimbot'", "imageAlt: 'war thunder cheats eac'"],
+	["imageAlt: 'War Thunder cheats 2026 ESP aimbot'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats combat aimbot'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheat download ESP aimbot'", "imageAlt: 'war thunder cheats download'"],
+	["imageAlt: 'War Thunder mod menu ESP aimbot'", "imageAlt: 'war thunder cheats mod menu'"],
+	["imageAlt: 'War Thunder soft aim aimbot settings'", "imageAlt: 'war thunder cheats soft aim'"],
+	["imageAlt: 'Best war thunder cheats 2026 ESP'", "imageAlt: 'best war thunder cheats'"],
+	["imageAlt: 'War Thunder aimbot hack combat'", "imageAlt: 'war thunder cheats aimbot'"],
+	["imageAlt: 'War Thunder ESP hack wallhack'", "imageAlt: 'war thunder cheats esp'"],
+	["imageAlt: 'War Thunder unlock all ESP aimbot guide'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats privacy policy'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats refund policy'", "imageAlt: 'war thunder cheats'"],
+	["imageAlt: 'War Thunder cheats terms of use'", "imageAlt: 'war thunder cheats'"],
 ];
 
 let pages = readFileSync('scripts/i18n-data/pages-en.mjs', 'utf8');
@@ -49,13 +49,13 @@ console.log('pages-en imageAlts simplified');
 // productPage() imageAlt template in pages-i18n
 let i18n = readFileSync('scripts/i18n-data/pages-i18n.mjs', 'utf8');
 i18n = i18n
-	.split("imageAlt: `Tarkov ${meta.altKeyword}`")
-	.join("imageAlt: 'tarkov cheats'")
-	.split("galleryTitle: `Tarkov Cheats ${topicName}`")
-	.join("galleryTitle: 'tarkov cheats'")
-	.split("imageAlt: `Tarkov cheats ${kind} policy`")
-	.join("imageAlt: 'tarkov cheats'")
-	.split("galleryTitle: `Tarkov Cheats ${kind} resources`")
-	.join("galleryTitle: 'tarkov cheats'");
+	.split("imageAlt: `War Thunder ${meta.altKeyword}`")
+	.join("imageAlt: 'war thunder cheats'")
+	.split("galleryTitle: `War Thunder Cheats ${topicName}`")
+	.join("galleryTitle: 'war thunder cheats'")
+	.split("imageAlt: `War Thunder cheats ${kind} policy`")
+	.join("imageAlt: 'war thunder cheats'")
+	.split("galleryTitle: `War Thunder Cheats ${kind} resources`")
+	.join("galleryTitle: 'war thunder cheats'");
 writeFileSync('scripts/i18n-data/pages-i18n.mjs', i18n);
 console.log('pages-i18n image alts simplified');

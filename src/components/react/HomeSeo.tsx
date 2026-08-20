@@ -2,13 +2,15 @@ import { useTranslation } from 'react-i18next';
 import I18nProvider from './I18nProvider';
 
 type FaqItem = { slug: string; question: string; answer: string; href: string };
+type TopicLink = { label: string; href: string };
 
 type Props = {
 	locale: string;
 	faqs: FaqItem[];
+	topicLinks: TopicLink[];
 };
 
-function HomeSeoInner({ faqs }: Props) {
+function HomeSeoInner({ faqs, topicLinks }: Props) {
 	const { t } = useTranslation();
 
 	const categories = [
@@ -17,9 +19,9 @@ function HomeSeoInner({ faqs }: Props) {
 			hintKey: 'homeSeo.catFeaturesHint',
 			links: [
 				{ href: '/features/', labelKey: 'homeSeo.linkAllFeatures' },
-				{ href: '/tarkov-esp/', labelKey: 'homeSeo.linkEsp' },
-				{ href: '/tarkov-aimbot/', labelKey: 'homeSeo.linkAimbot' },
-				{ href: '/tarkov-radar-hack/', labelKey: 'homeSeo.linkRadar' },
+				{ href: '/war-thunder-esp/', labelKey: 'homeSeo.linkEsp' },
+				{ href: '/war-thunder-aimbot/', labelKey: 'homeSeo.linkAimbot' },
+				{ href: '/war-thunder-radar-hack/', labelKey: 'homeSeo.linkRadar' },
 			],
 		},
 		{
@@ -27,7 +29,7 @@ function HomeSeoInner({ faqs }: Props) {
 			hintKey: 'homeSeo.catStatusHint',
 			links: [
 				{ href: '/updates/', labelKey: 'homeSeo.linkLiveStatus' },
-				{ href: '/tarkov-cheats/', labelKey: 'homeSeo.linkUndetected' },
+				{ href: '/war-thunder-cheats/', labelKey: 'homeSeo.linkUndetected' },
 				{ href: '/setup/', labelKey: 'homeSeo.linkSetup' },
 				{ href: '/faq/', labelKey: 'homeSeo.linkFaq' },
 			],
@@ -38,7 +40,7 @@ function HomeSeoInner({ faqs }: Props) {
 			links: [
 				{ href: '/pricing/', labelKey: 'homeSeo.linkPlans' },
 				{ href: '/reviews/', labelKey: 'homeSeo.linkReviews' },
-				{ href: '/tarkov-cheats/', labelKey: 'homeSeo.linkTarkovCheats' },
+				{ href: '/war-thunder-cheats/', labelKey: 'homeSeo.linkCheats' },
 				{ href: '/features/', labelKey: 'homeSeo.linkAllFeatures' },
 			],
 		},
@@ -84,6 +86,29 @@ function HomeSeoInner({ faqs }: Props) {
 					</nav>
 				))}
 			</div>
+
+			<nav className="home-seo__faq home-seo__resources" aria-labelledby="home-resources-title">
+				<header className="home-seo__faq-head">
+					<div>
+						<p className="home-seo__eyebrow">{t('homeSeo.resourcesEyebrow')}</p>
+						<h3 id="home-resources-title">{t('homeSeo.resourcesTitle')}</h3>
+						<p className="home-seo__faq-lede">{t('homeSeo.resourcesLede')}</p>
+					</div>
+					<a className="home-seo__faq-link" href="https://warthunder.com/" rel="noopener noreferrer" target="_blank">
+						{t('homeSeo.resourcesCta')}
+					</a>
+				</header>
+				<ul className="home-seo__resource-list">
+					{topicLinks.map((link) => (
+						<li key={link.href}>
+							<a href={link.href} rel="noopener noreferrer" target="_blank">
+								<span>{link.label}</span>
+								<span className="home-seo__cat-arrow" aria-hidden="true" />
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
 
 			<section className="home-seo__faq" aria-labelledby="home-faq-title">
 				<header className="home-seo__faq-head">

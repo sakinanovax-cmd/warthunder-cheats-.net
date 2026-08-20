@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Completes escape-from-tarkov-cheats SEO audit: add missing pages, fix leftovers, strip Zadeyo from meta.
+ * Completes war-thunder-cheats SEO audit: add missing pages, fix leftovers, strip Zadeyo from meta.
  * Run: node scripts/complete-seo-audit.mjs
  */
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
@@ -11,52 +11,52 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NODE = 'C:\\Program Files\\nodejs\\node.exe';
 
 const EXTRA_PAGES = [
-	{ id: 'hacks', dir: 'tarkov-cheats', pageId: 'hacks' },
-	{ id: 'cheat-download', dir: 'tarkov-cheat-download', pageId: 'cheat-download' },
-	{ id: 'mod-menu', dir: 'tarkov-mod-menu', pageId: 'mod-menu' },
-	{ id: 'soft-aim', dir: 'tarkov-soft-aim', pageId: 'soft-aim' },
-	{ id: 'best-cheats', dir: 'best-tarkov-cheats', pageId: 'best-cheats' },
-	{ id: 'aimbot-hack', dir: 'tarkov-aimbot-hack', pageId: 'aimbot-hack' },
-	{ id: 'esp-hack', dir: 'tarkov-esp-hack', pageId: 'esp-hack' },
-	{ id: 'unlock-all', dir: 'tarkov-unlock-all', pageId: 'unlock-all' },
+	{ id: 'hacks', dir: 'war-thunder-cheats', pageId: 'hacks' },
+	{ id: 'cheat-download', dir: 'war-thunder-cheat-download', pageId: 'cheat-download' },
+	{ id: 'mod-menu', dir: 'war-thunder-mod-menu', pageId: 'mod-menu' },
+	{ id: 'soft-aim', dir: 'war-thunder-soft-aim', pageId: 'soft-aim' },
+	{ id: 'best-cheats', dir: 'best-war-thunder-cheats', pageId: 'best-cheats' },
+	{ id: 'aimbot-hack', dir: 'war-thunder-aimbot-hack', pageId: 'aimbot-hack' },
+	{ id: 'esp-hack', dir: 'war-thunder-esp-hack', pageId: 'esp-hack' },
+	{ id: 'unlock-all', dir: 'war-thunder-unlock-all', pageId: 'unlock-all' },
 ];
 
 const GLOBAL_REPLACEMENTS = [
-	[/tarkov-tarkov/g, 'tarkov'],
-	[/battleye-bypass-tarkov/g, 'battleye-bypass'],
-	[/Escape from Tarkov/g, 'Escape from Tarkov'],
-	[/Escape from Tarkov/g, 'Escape from Tarkov'],
-	[/Call of Duty/g, 'Escape from Tarkov'],
-	[/Tarkov Wallhack/g, 'Escape from Tarkov Wallhack'],
-	[/Tarkov Radar Hack/g, 'Escape from Tarkov Radar Hack'],
-	[/Tarkov Cheat Features/g, 'Escape from Tarkov Cheat Features'],
-	[/Tarkov Cheat Pricing/g, 'Escape from Tarkov Cheat Pricing'],
-	[/Tarkov Cheat Setup/g, 'Escape from Tarkov Cheat Setup'],
-	[/Tarkov Cheat Status/g, 'Escape from Tarkov Cheat Status'],
-	[/Tarkov Cheat Support/g, 'Escape from Tarkov Cheat Support'],
-	[/Tarkov squad fight/g, 'Escape from Tarkov squad fight'],
-	[/Tarkov squad builder/g, 'Escape from Tarkov loadout builder'],
-	[/Tarkov store header/g, 'Escape from Tarkov header'],
-	[/Tarkov wasteland combat/g, 'Escape from Tarkov battle royale combat'],
-	[/Tarkov loadout builder/g, 'Escape from Tarkov loadout builder'],
-	[/Tarkov pricing/g, 'Escape from Tarkov pricing'],
-	[/Tarkov BattlEye anti-cheat/g, 'Escape from Tarkov BattlEye anti-cheat'],
-	[/on Tarkov/g, 'on Escape from Tarkov'],
-	[/for Tarkov/g, 'for Escape from Tarkov'],
-	[/Tarkov guides/g, 'Escape from Tarkov guides'],
-	[/Tarkov guide/g, 'Escape from Tarkov guide'],
-	[/Tarkov hileleri/g, 'Escape from Tarkov hileleri'],
-	[/Tarkov hile/g, 'Escape from Tarkov hile'],
-	[/Tarkov hileleri/g, 'Escape from Tarkov hileleri'],
-	[/cheatów Tarkov/g, 'cheatów Escape from Tarkov'],
-	[/cheat Tarkov/g, 'cheat Escape from Tarkov'],
-	[/cheats Tarkov/g, 'cheats Escape from Tarkov'],
-	[/trucos Tarkov/g, 'trucos Escape from Tarkov'],
-	[/triche Tarkov/g, 'triche Escape from Tarkov'],
-	[/trucchi Tarkov/g, 'trucchi Escape from Tarkov'],
-	[/Wallhack Tarkov/g, 'Escape from Tarkov Wallhack'],
-	[/cheat Tarkov undetected/g, 'cheat Escape from Tarkov undetected'],
-	[/cheats Tarkov undetected/g, 'cheats Escape from Tarkov undetected'],
+	[/war-thunder-war-thunder/g, 'war-thunder'],
+	[/eac-bypass-war-thunder/g, 'eac-bypass'],
+	[/War Thunder/g, 'War Thunder'],
+	[/War Thunder/g, 'War Thunder'],
+	[/Call of Duty/g, 'War Thunder'],
+	[/War Thunder Wallhack/g, 'War Thunder Wallhack'],
+	[/War Thunder Radar Hack/g, 'War Thunder Radar Hack'],
+	[/War Thunder Cheat Features/g, 'War Thunder Cheat Features'],
+	[/War Thunder Cheat Pricing/g, 'War Thunder Cheat Pricing'],
+	[/War Thunder Cheat Setup/g, 'War Thunder Cheat Setup'],
+	[/War Thunder Cheat Status/g, 'War Thunder Cheat Status'],
+	[/War Thunder Cheat Support/g, 'War Thunder Cheat Support'],
+	[/War Thunder squad fight/g, 'War Thunder squad fight'],
+	[/War Thunder squad builder/g, 'War Thunder loadout builder'],
+	[/War Thunder store header/g, 'War Thunder header'],
+	[/War Thunder wasteland combat/g, 'War Thunder battle royale combat'],
+	[/War Thunder loadout builder/g, 'War Thunder loadout builder'],
+	[/War Thunder pricing/g, 'War Thunder pricing'],
+	[/War Thunder Easy Anti-Cheat/g, 'War Thunder Easy Anti-Cheat'],
+	[/on War Thunder/g, 'on War Thunder'],
+	[/for War Thunder/g, 'for War Thunder'],
+	[/War Thunder guides/g, 'War Thunder guides'],
+	[/War Thunder guide/g, 'War Thunder guide'],
+	[/War Thunder hileleri/g, 'War Thunder hileleri'],
+	[/War Thunder hile/g, 'War Thunder hile'],
+	[/War Thunder hileleri/g, 'War Thunder hileleri'],
+	[/cheatów War Thunder/g, 'cheatów War Thunder'],
+	[/cheat War Thunder/g, 'cheat War Thunder'],
+	[/cheats War Thunder/g, 'cheats War Thunder'],
+	[/trucos War Thunder/g, 'trucos War Thunder'],
+	[/triche War Thunder/g, 'triche War Thunder'],
+	[/trucchi War Thunder/g, 'trucchi War Thunder'],
+	[/Wallhack War Thunder/g, 'War Thunder Wallhack'],
+	[/cheat War Thunder undetected/g, 'cheat War Thunder undetected'],
+	[/cheats War Thunder undetected/g, 'cheats War Thunder undetected'],
 	[/Verdansk beams/g, 'long-range AR beams'],
 	[/scav-run room clears/g, 'close-quarters room clears'],
 	[/Verdansk and Urzikstan/g, 'Verdansk and scav-run'],
@@ -68,13 +68,13 @@ const GLOBAL_REPLACEMENTS = [
 	[/Activision security/g, 'Epic Games security'],
 	[/Activision bans/g, 'Epic Games bans'],
 	[/Activision/g, 'Epic Games'],
-	[/battleye/gi, 'battleye'],
-	[/BattlEye/g, 'BattlEye anti-cheat'],
-	[/escape-from-tarkov-cheats/g, 'escape-from-tarkov-cheats'],
-	[/escape-from-tarkov/g, 'tarkov'],
-	[/Undetected Wallhack for Call of Duty/g, 'Undetected Wallhack for Escape from Tarkov'],
+	[/eac/gi, 'eac'],
+	[/Easy Anti-Cheat/g, 'Easy Anti-Cheat'],
+	[/war-thunder-cheats/g, 'war-thunder-cheats'],
+	[/war-thunder/g, 'war-thunder'],
+	[/Undetected Wallhack for Call of Duty/g, 'Undetected Wallhack for War Thunder'],
 	[/How ESP wallhack, radar, and Aimbot rebuild after Call of Duty anti-cheat/g,
-		'How ESP wallhack, radar, and Aimbot rebuild after Escape from Tarkov anti-cheat'],
+		'How ESP wallhack, radar, and Aimbot rebuild after War Thunder anti-cheat'],
 ];
 
 /** Remove Zadeyo from meta description/title strings only */
@@ -90,7 +90,7 @@ function stripZadeyoFromMeta(text) {
 		.replace(/\s*Zadeyo delivery\.?/gi, 'instant digital delivery.')
 		.replace(/\s*and Zadeyo delivery\.?/gi, ' and instant digital delivery.')
 		.replace(/\|\s*Instant Zadeyo Delivery/g, '| Instant Digital Delivery')
-		.replace(/Buy on Zadeyo/g, 'Buy Tarkov Cheats')
+		.replace(/Buy on Zadeyo/g, 'Buy War Thunder Cheats')
 		.replace(/\s{2,}/g, ' ')
 		.trim();
 }
@@ -169,38 +169,38 @@ import LocalizedPage from '../../components/LocalizedPage.astro';
 async function fixLocalesBlogUi() {
 	const file = path.join(ROOT, 'src', 'data', 'i18n', 'locales.ts');
 	let content = await readFile(file, 'utf8');
-	content = content.replace(/Tarkov guides/g, 'Escape from Tarkov guides');
-	content = content.replace(/Tarkov guide/g, 'Escape from Tarkov guide');
-	content = content.replace(/Tarkov hileleri/g, 'Escape from Tarkov hileleri');
-	content = content.replace(/Tarkov hile/g, 'Escape from Tarkov hile');
-	content = content.replace(/cheat Tarkov/g, 'cheat Escape from Tarkov');
-	content = content.replace(/cheats Tarkov/g, 'cheats Escape from Tarkov');
-	content = content.replace(/trucos Tarkov/g, 'trucos Escape from Tarkov');
-	content = content.replace(/triche Tarkov/g, 'triche Escape from Tarkov');
-	content = content.replace(/trucchi Tarkov/g, 'trucchi Escape from Tarkov');
-	content = content.replace(/cheatów Tarkov/g, 'cheatów Escape from Tarkov');
-	content = content.replace(/читов Tarkov/g, 'читов Escape from Tarkov');
-	content = content.replace(/читів Tarkov/g, 'читів Escape from Tarkov');
-	content = content.replace(/Tarkovチート/g, 'Escape from Tarkovチート');
-	content = content.replace(/Tarkov 치트/g, 'Escape from Tarkov 치트');
-	content = content.replace(/Tarkov作弊/g, 'Escape from Tarkov作弊');
-	content = content.replace(/Tarkov rehberleri/g, 'Escape from Tarkov rehberleri');
-	content = content.replace(/Tarkov gidsen/g, 'Escape from Tarkov gidsen');
-	content = content.replace(/Tarkov průvodce/g, 'Escape from Tarkov průvodce');
-	content = content.replace(/Tarkov guider/g, 'Escape from Tarkov guider');
-	content = content.replace(/Tarkov related/g, 'Escape from Tarkov related');
-	content = content.replace(/Tarkov ガイド/g, 'Escape from Tarkov ガイド');
-	content = content.replace(/Tarkov 가이드/g, 'Escape from Tarkov 가이드');
-	content = content.replace(/Tarkov指南/g, 'Escape from Tarkov指南');
-	content = content.replace(/Tarkov गाइड/g, 'Escape from Tarkov गाइड');
-	content = content.replace(/Tarkov panduan/g, 'Escape from Tarkov panduan');
-	content = content.replace(/Tarkov คู่มือ/g, 'Escape from Tarkov คู่มือ');
-	content = content.replace(/Tarkov hướng dẫn/g, 'Escape from Tarkov hướng dẫn');
+	content = content.replace(/War Thunder guides/g, 'War Thunder guides');
+	content = content.replace(/War Thunder guide/g, 'War Thunder guide');
+	content = content.replace(/War Thunder hileleri/g, 'War Thunder hileleri');
+	content = content.replace(/War Thunder hile/g, 'War Thunder hile');
+	content = content.replace(/cheat War Thunder/g, 'cheat War Thunder');
+	content = content.replace(/cheats War Thunder/g, 'cheats War Thunder');
+	content = content.replace(/trucos War Thunder/g, 'trucos War Thunder');
+	content = content.replace(/triche War Thunder/g, 'triche War Thunder');
+	content = content.replace(/trucchi War Thunder/g, 'trucchi War Thunder');
+	content = content.replace(/cheatów War Thunder/g, 'cheatów War Thunder');
+	content = content.replace(/читов War Thunder/g, 'читов War Thunder');
+	content = content.replace(/читів War Thunder/g, 'читів War Thunder');
+	content = content.replace(/War Thunderチート/g, 'War Thunderチート');
+	content = content.replace(/War Thunder 치트/g, 'War Thunder 치트');
+	content = content.replace(/War Thunder作弊/g, 'War Thunder作弊');
+	content = content.replace(/War Thunder rehberleri/g, 'War Thunder rehberleri');
+	content = content.replace(/War Thunder gidsen/g, 'War Thunder gidsen');
+	content = content.replace(/War Thunder průvodce/g, 'War Thunder průvodce');
+	content = content.replace(/War Thunder guider/g, 'War Thunder guider');
+	content = content.replace(/War Thunder related/g, 'War Thunder related');
+	content = content.replace(/War Thunder ガイド/g, 'War Thunder ガイド');
+	content = content.replace(/War Thunder 가이드/g, 'War Thunder 가이드');
+	content = content.replace(/War Thunder指南/g, 'War Thunder指南');
+	content = content.replace(/War Thunder गाइड/g, 'War Thunder गाइड');
+	content = content.replace(/War Thunder panduan/g, 'War Thunder panduan');
+	content = content.replace(/War Thunder คู่มือ/g, 'War Thunder คู่มือ');
+	content = content.replace(/War Thunder hướng dẫn/g, 'War Thunder hướng dẫn');
 	await writeFile(file, content, 'utf8');
 	console.log('Fixed locales.ts blogUi');
 }
 
-console.log('=== Tarkov Cheats SEO completion ===\n');
+console.log('=== War Thunder Cheats SEO completion ===\n');
 await applyGlobalFixes();
 await createExtraPages();
 await fixLocalesBlogUi();

@@ -1,0 +1,27 @@
+---
+import { defaultLocale, type LocaleCode } from '../data/i18n/locales';
+import { getT } from '../i18n/server';
+
+interface Props {
+	locale?: LocaleCode;
+}
+
+const locale = Astro.props.locale ?? defaultLocale;
+const t = getT(locale);
+---
+
+<section class="shell home__prose home__prose--en" aria-labelledby="home-about-title">
+	<h2 id="home-about-title">{t('home.aboutTitle')}</h2>
+	<p>{t('home.aboutP1')}</p>
+	<p>
+		{t('home.aboutP2Before')}{' '}
+		<a href="/war-thunder-cheats/">{t('home.aboutPillar')}</a>
+		{t('home.aboutP2Mid')}
+		<a href="/war-thunder-esp/">{t('home.aboutEsp')}</a>
+		{t('home.aboutP2Mid')}
+		<a href="/war-thunder-aimbot/">{t('home.aboutAimbot')}</a>
+		{t('home.aboutP2Or')}
+		<a href="/updates/">{t('home.aboutUndetected')}</a>
+		{t('home.aboutP2After')}
+	</p>
+</section>

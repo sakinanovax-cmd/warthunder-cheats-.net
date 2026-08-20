@@ -10,9 +10,10 @@ type Props = {
 	shareUrl: string;
 	explore: FooterLink[];
 	help: FooterLink[];
+	resources: { label: string; href: string }[];
 };
 
-function SiteFooterInner({ siteName, supportEmail, shareUrl, explore, help }: Props) {
+function SiteFooterInner({ siteName, supportEmail, shareUrl, explore, help, resources }: Props) {
 	const { t } = useTranslation();
 	const year = new Date().getFullYear();
 	const encodedUrl = encodeURIComponent(shareUrl);
@@ -72,6 +73,18 @@ function SiteFooterInner({ siteName, supportEmail, shareUrl, explore, help }: Pr
 						<li>
 							<a href={`mailto:${supportEmail}`}>{supportEmail}</a>
 						</li>
+					</ul>
+				</div>
+				<div>
+					<p className="site-footer__label">{t('footer.resources')}</p>
+					<ul>
+						{resources.map((link) => (
+							<li key={link.href}>
+								<a href={link.href} rel="noopener noreferrer" target="_blank">
+									{link.label}
+								</a>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>

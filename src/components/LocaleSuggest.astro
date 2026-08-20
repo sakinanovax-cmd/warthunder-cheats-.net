@@ -1,7 +1,7 @@
 ---
-import LocaleSuggestApp from './react/LocaleSuggestApp';
 import { locales, defaultLocale, type LocaleCode } from '../data/i18n/locales';
 import { localizedSlugs, type PageId } from '../data/i18n/routing';
+import { getT } from '../i18n/server';
 
 interface Props {
 	currentLocale: LocaleCode;
@@ -14,23 +14,108 @@ if (currentLocale !== defaultLocale) {
 	return null;
 }
 
-const localeMetas = locales.map((l) => ({
+const t = getT(currentLocale);
+const pageSlugs = localizedSlugs[pageId] ?? {};
+const localePayload = locales.map((l) => ({
 	code: l.code,
 	name: l.name,
 	nativeName: l.nativeName,
 	region: l.region,
+	href: pageSlugs[l.code] ? `/${l.code}/${pageSlugs[l.code]}/` : `/${l.code}/`,
 }));
-
-const pageSlugs = localizedSlugs[pageId] ?? {};
 ---
 
-<LocaleSuggestApp
-	client:idle
-	locale={currentLocale}
-	locales={localeMetas}
-	pageSlugs={pageSlugs}
-	defaultLocale={defaultLocale}
-/>
+<div
+	class="locale-suggest"
+	role="region"
+	aria-label={t('common.languageSuggestion')}
+	hidden
+	data-locale-suggest
+	data-default-locale={defaultLocale}
+	data-current-locale={currentLocale}
+	data-locales={JSON.stringify(localePayload)}
+	data-lead-template={t('common.localeSuggestLead', { nativeName: '__NATIVE__', region: '__REGION__' })}
+	data-version-template={t('common.localeVersion', { name: '__NAME__' })}
+>
+	<p class="locale-suggest__text">
+		<span data-locale-lead></span>
+		<a data-locale-link href="#"></a>
+	</p>
+	<button
+		type="button"
+		class="locale-suggest__dismiss"
+		aria-label={t('common.dismiss')}
+		data-locale-dismiss
+	>
+		×
+	</button>
+</div>
+
+<script is:inline>
+	(() => {
+		const root = document.querySelector('[data-locale-suggest]');
+		if (!root) return;
+		if (sessionStorage.getItem('fc_locale_dismissed')) return;
+
+		const defaultLocale = root.getAttribute('data-default-locale') || 'en';
+		const currentLocale = root.getAttribute('data-current-locale') || 'en';
+		/** @type {{code:string,name:string,nativeName:string,region:string,href:string}[]} */
+		let locales = [];
+		try {
+			locales = JSON.parse(root.getAttribute('data-locales') || '[]');
+		} catch {
+			return;
+		}
+
+		const cookie = document.cookie.match(/(?:^|;\s*)fc_locale=([^;]+)/)?.[1];
+		const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
+		let preferred = defaultLocale;
+		if (cookie && locales.some((l) => l.code === cookie)) {
+			preferred = cookie;
+		} else {
+			for (const tag of langs) {
+				const primary = String(tag).toLowerCase().split('-')[0];
+				if (locales.some((l) => l.code === primary)) {
+					preferred = primary;
+					break;
+				}
+			}
+		}
+
+		if (preferred === defaultLocale || preferred === currentLocale) return;
+		const meta = locales.find((l) => l.code === preferred);
+		if (!meta) return;
+
+		const leadTpl = root.getAttribute('data-lead-template') || '';
+		const versionTpl = root.getAttribute('data-version-template') || '';
+		const lead = root.querySelector('[data-locale-lead]');
+		const link = root.querySelector('[data-locale-link]');
+		const dismiss = root.querySelector('[data-locale-dismiss]');
+		if (!lead || !link || !dismiss) return;
+
+		lead.textContent = leadTpl
+			.replace('__NATIVE__', meta.nativeName)
+			.replace('__REGION__', meta.region);
+		link.textContent = versionTpl.replace('__NAME__', meta.name);
+		link.setAttribute('href', meta.href);
+		link.addEventListener('click', () => {
+			document.cookie = `fc_locale=${meta.code};path=/;max-age=31536000;SameSite=Lax`;
+		});
+		dismiss.addEventListener('click', () => {
+			sessionStorage.setItem('fc_locale_dismissed', '1');
+			root.hidden = true;
+		});
+
+		const show = () => {
+			root.hidden = false;
+		};
+		if ('requestIdleCallback' in window) {
+			requestIdleCallback(show, { timeout: 3000 });
+		} else {
+			setTimeout(show, 1);
+		}
+	})();
+</script>
 
 <style is:global>
 	.locale-suggest {
@@ -44,6 +129,10 @@ const pageSlugs = localizedSlugs[pageId] ?? {};
 		font-size: 0.82rem;
 		color: var(--ink-muted);
 		text-align: center;
+	}
+
+	.locale-suggest[hidden] {
+		display: none !important;
 	}
 
 	.locale-suggest__text {

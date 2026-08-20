@@ -16,9 +16,9 @@ const bad = [
 	'Activision',
 	'soft aim, and .',
 	'ESP, Soft Aim,',
-	'best-tarkov-cheats',
-	'tarkov-esp-hack',
-	'tarkov-aimbot-hack',
+	'best-war-thunder-cheats',
+	'war-thunder-esp-hack',
+	'war-thunder-aimbot-hack',
 ];
 console.log('--- pages-en leftovers ---');
 for (const b of bad) {
@@ -37,10 +37,10 @@ for (const b of [
 	'vehicles before',
 	'Controllers',
 	'Battle Pass',
-	'RBattlEye',
+	'REasy Anti-Cheat',
 	'soft aim, and .',
-	'best-tarkov-cheats',
-	'tarkov-esp-hack',
+	'best-war-thunder-cheats',
+	'war-thunder-esp-hack',
 ]) {
 	const n = en.split(b).length - 1;
 	if (n) console.log(`${b}: ${n}`);
@@ -51,26 +51,26 @@ const reps = [
 	['V-Bucks', 'roubles'],
 	['Item Shop', 'Flea Market'],
 	['Battle Pass', 'wipe progression'],
-	['FNCS', 'Tarkov tournament'],
+	['FNCS', 'War Thunder tournament'],
 	['Hammer AR', 'M4A1'],
 	['mythics', 'meta guns'],
 	['island codes', 'offline practice maps'],
 	['Creative 1v1s', 'aim training'],
 	['creative 1v1s', 'aim training'],
 	['Epic health', 'Battlestate status'],
-	['Epic terms', 'Battlestate Games terms'],
-	["Epic's BattlEye", 'BattlEye'],
-	['Epic patch', 'Tarkov patch'],
+	['Epic terms', 'Gaijin Entertainment terms'],
+	["Epic's Easy Anti-Cheat", 'Easy Anti-Cheat'],
+	['Epic patch', 'War Thunder patch'],
 	['EliteFN', 'a Fortnite cheat shop'],
 	['GhostWare', 'a slim cheat vendor'],
 	['CheatVault', 'another cheat shop'],
-	['/tarkov-aimbot-hack/', '/tarkov-aimbot/'],
-	['/tarkov-esp-hack/', '/tarkov-esp/'],
-	['/best-tarkov-cheats/', '/tarkov-cheats/'],
-	['best Tarkov cheats', 'Tarkov cheats'],
+	['/war-thunder-aimbot-hack/', '/war-thunder-aimbot/'],
+	['/war-thunder-esp-hack/', '/war-thunder-esp/'],
+	['/best-war-thunder-cheats/', '/war-thunder-cheats/'],
+	['best War Thunder cheats', 'War Thunder cheats'],
 	['hot drops', 'hot spawns'],
 	['ranked grinders', 'raid grinders'],
-	['before Ranked', 'before a raid'],
+	['before Ranked', 'before a battle'],
 ];
 let s = blog;
 let n = 0;

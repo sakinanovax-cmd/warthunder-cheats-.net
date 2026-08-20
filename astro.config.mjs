@@ -8,7 +8,7 @@ import { brandStudioPlugin } from './scripts/brand-studio/vite-plugin.mjs';
 // Do not add @astrojs/cloudflare; sitemaps and HTML must emit to dist/ root.
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://tarkovcheats.org',
+	site: 'https://warthundercheats.net',
 	trailingSlash: 'always',
 	compressHTML: true,
 	devToolbar: { enabled: false },
@@ -24,6 +24,7 @@ export default defineConfig({
 		plugins: [tailwindcss(), brandStudioPlugin()],
 		build: {
 			cssMinify: true,
+			cssCodeSplit: false,
 			minify: 'terser',
 			assetsInlineLimit: 4096,
 			target: 'es2022',

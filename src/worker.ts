@@ -1,19 +1,19 @@
 /**
  * Cloudflare Worker — host canonicalization before static assets.
- * Canonical site: https://tarkovcheats.org (matches brand.url)
+ * Canonical site: https://warthundercheats.net (matches brand.url)
  *
- * Requires DNS: CNAME `www` → `tarkovcheats.org` (proxied) AND
- * Workers custom domain `www.tarkovcheats.org` attached — otherwise
+ * Requires DNS: CNAME `www` → `warthundercheats.net` (proxied) AND
+ * Workers custom domain `www.warthundercheats.net` attached — otherwise
  * www is NXDOMAIN and Seobility fails the www/non-www check.
  */
 export interface Env {
 	ASSETS: Fetcher;
 }
 
-const CANONICAL_HOST = 'tarkovcheats.org';
+const CANONICAL_HOST = 'warthundercheats.net';
 
-/** Old apex still 301 → current canonical. */
-const LEGACY_HOSTS = new Set(['besttarkovcheats.com', 'www.besttarkovcheats.com']);
+/** Old apex still 301 → current canonical. Keep empty unless a prior domain exists. */
+const LEGACY_HOSTS = new Set([]);
 
 function canonicalUrl(request: Request): URL | null {
 	const url = new URL(request.url);

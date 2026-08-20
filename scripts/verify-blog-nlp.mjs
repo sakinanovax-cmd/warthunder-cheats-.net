@@ -16,6 +16,6 @@ const all = blogPosts.flatMap((p) =>
 const needles = ['${EXT', 'V-Bucks', 'Hammer AR', 'FNCS', 'Verdansk', 'EliteFN', 'GhostWare', 'CheatVault', 'Battle Pass', 'Item Shop'];
 for (const n of needles) {
 	const hits = all.filter((t) => t.includes(n));
-	if (hits.length) console.log('LEFTOVER', n, hits.length);
+	if (hits.length) console.log('LWTOVER', n, hits.length);
 }
 console.log('ok');

@@ -42,14 +42,14 @@ export function contentSrcSet(baseSrc: string): string | undefined {
  * Native art ~1024×409 (~2.5:1).
  */
 export const heroResponsive: ResponsiveWidth[] = [
-	{ src: '/images/tarkov-cheats-hero-640w.webp', width: 640 },
-	{ src: '/images/tarkov-cheats-hero-1024w.webp', width: 1024 },
+	{ src: '/images/war-thunder-cheats-hero-640w.webp', width: 640 },
+	{ src: '/images/war-thunder-cheats-hero-1024w.webp', width: 1024 },
 ];
 
 export const heroDesktopResponsive: ResponsiveWidth[] = heroResponsive;
 
 /** Default LCP src — mid ladder WebP (~56KB). */
-export const heroSrc = '/images/tarkov-cheats-hero-1024w.webp';
+export const heroSrc = '/images/war-thunder-cheats-hero-1024w.webp';
 export const heroSrcSet = buildSrcSet(heroResponsive);
 export const heroSizes = '100vw';
 
