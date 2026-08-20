@@ -1,5 +1,5 @@
-# CI Workers Builds project name (repo: war-thundercheats)
-name = "warthundercheats"
+# Must match Cloudflare Workers Builds project name (Git-connected)
+name = "warthunder-cheats--net"
 compatibility_date = "2026-01-01"
 main = "src/worker.ts"
 
