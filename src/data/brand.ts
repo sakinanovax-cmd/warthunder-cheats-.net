@@ -13,7 +13,7 @@ export const brand = {
 	locale: 'en',
 	market: 'Worldwide',
 	supportEmail: 'support@warthundercheats.net',
-	checkoutUrl: 'https://zadeyo.com/go/QRH?to=%2Fproducts%2Fwar-thunder',
+	checkoutUrl: 'https://zadeyo.com/go/SAKINA?to=%2Fproducts%2Fwar-thunder',
 
 	/** Game this template instance targets */
 	game: 'War Thunder',
